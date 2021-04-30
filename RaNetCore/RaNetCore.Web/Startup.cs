@@ -1,10 +1,19 @@
+using System;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using Newtonsoft.Json;
+
+using RaNetCore.Web.StartupConfig.AppServices;
+using RaNetCore.Web.StartupConfig.DbContext;
+using RaNetCore.Web.StartupConfig.Identity;
+using RaNetCore.Web.StartupConfig.ThirdParties;
 
 namespace RaNetCore.Web
 {
@@ -17,11 +26,21 @@ namespace RaNetCore.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = this.Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddControllersWithViews();
+            // Custom set up extension methods from StatupConfig
+            services.SetUpThirdParties();
+            services.SetUpDbContext(connectionString);
+            services.SetUpIdentity(this.Configuration);
+            services.SetUpAppServices();
+
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+                // Turns off recursive json parsing when having navigation properties in view models
+                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -30,18 +49,19 @@ namespace RaNetCore.Web
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                // TODO Cors missing
             }
             else
             {
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+                // TODO Cors missing
             }
 
             app.UseHttpsRedirection();
@@ -49,6 +69,8 @@ namespace RaNetCore.Web
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
+            //TODO ?? app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -60,6 +82,7 @@ namespace RaNetCore.Web
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "ClientApp";
+                spa.Options.StartupTimeout = TimeSpan.FromSeconds(120);
 
                 if (env.IsDevelopment())
                 {
