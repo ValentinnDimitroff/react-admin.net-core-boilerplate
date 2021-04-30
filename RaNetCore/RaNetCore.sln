@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaNetCore.Web", "RaNetCore.Web\RaNetCore.Web.csproj", "{38D4582A-305E-4D65-A2FB-3284E8A00AA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaNetCore.Database", "RaNetCore.Database\RaNetCore.Database.csproj", "{D81952BD-20FC-4502-918F-AD36F88A8B5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaNetCore.Common", "RaNetCore.Common\RaNetCore.Common.csproj", "{A1F9FED5-3DC8-4B29-81B6-9B70E36EBB1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaNetCore.Services", "RaNetCore.Services\RaNetCore.Services.csproj", "{9035B698-4117-4B0E-9D45-613B21233570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaNetCore.Models", "RaNetCore.Models\RaNetCore.Models.csproj", "{35E8214E-C082-4F46-BF30-4159A1BF0435}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{38D4582A-305E-4D65-A2FB-3284E8A00AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38D4582A-305E-4D65-A2FB-3284E8A00AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38D4582A-305E-4D65-A2FB-3284E8A00AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81952BD-20FC-4502-918F-AD36F88A8B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81952BD-20FC-4502-918F-AD36F88A8B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81952BD-20FC-4502-918F-AD36F88A8B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81952BD-20FC-4502-918F-AD36F88A8B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1F9FED5-3DC8-4B29-81B6-9B70E36EBB1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F9FED5-3DC8-4B29-81B6-9B70E36EBB1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F9FED5-3DC8-4B29-81B6-9B70E36EBB1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F9FED5-3DC8-4B29-81B6-9B70E36EBB1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9035B698-4117-4B0E-9D45-613B21233570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9035B698-4117-4B0E-9D45-613B21233570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9035B698-4117-4B0E-9D45-613B21233570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9035B698-4117-4B0E-9D45-613B21233570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E8214E-C082-4F46-BF30-4159A1BF0435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E8214E-C082-4F46-BF30-4159A1BF0435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E8214E-C082-4F46-BF30-4159A1BF0435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E8214E-C082-4F46-BF30-4159A1BF0435}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
