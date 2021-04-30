@@ -38,9 +38,9 @@ namespace RaNetCore.Web.DbInit
             IConfiguration configuration = serviceProvider.GetService<IConfiguration>();
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(configuration.GetConnectionString("DefaultConnection"));
 
-            await dbContext
-                .Database
-                .ExecuteSqlInterpolatedAsync($"{OnCreationSqlScripts.ChangeCollation(builder.InitialCatalog)}");
+            //await dbContext
+            //    .Database
+            //    .ExecuteSqlCommandAsync($"{OnCreationSqlScripts.ChangeCollation(builder.InitialCatalog)}");
         }
 
         private static async Task SeedRolesAsync(RoleManager<ApplicationRole> roleManager)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace RaNetCore.Web.DbInit.Extensions
@@ -20,7 +14,7 @@ namespace RaNetCore.Web.DbInit.Extensions
 
             dbContext
                 .Database
-                .Migrate(); // Creates and applies migrations
+                .Migrate(); // ensures created and applies migrations
 
             return dbContext;
         }
