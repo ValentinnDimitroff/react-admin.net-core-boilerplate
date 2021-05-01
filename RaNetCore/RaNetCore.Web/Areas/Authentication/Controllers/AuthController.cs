@@ -5,25 +5,26 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+
 using AutoMapper;
+
 using RaNetCore.Models.UserModels;
 using RaNetCore.Models.UserModels.Enums;
-using RaNetCore.Web.StartupConfig.AppSettingsModels;
 using RaNetCore.Web.Areas.Authentication.ViewModels;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using RaNetCore.Models.FundsModels;
-using RaNetCore.Models.FundsModels.Enums;
 using Microsoft.AspNetCore.Authorization;
 using System.Web;
+using RaNetCore.Web.StartupConfig.Identity.AppSettingsModels;
 
 namespace RaNetCore.Web.Areas.Authentication.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AuthController : Controller
+    public class AuthController : ControllerBase
     {
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
@@ -34,8 +35,7 @@ namespace RaNetCore.Web.Areas.Authentication.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IOptions<JwtSettings> jwtSettings,
-            IMapper mapper
-            )
+            IMapper mapper)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -46,7 +46,7 @@ namespace RaNetCore.Web.Areas.Authentication.Controllers
         [HttpPost("[action]")]
         public async Task<object> Login([FromBody] UserLoginViewModel model)
         {
-            var result = await signInManager
+            Microsoft.AspNetCore.Identity.SignInResult result = await signInManager
                 .PasswordSignInAsync(model.Email, model.Password, false, false);
 
             if (result.Succeeded)
@@ -69,10 +69,6 @@ namespace RaNetCore.Web.Areas.Authentication.Controllers
                 LastName = model.LastName,
                 UserName = model.Email,
                 Email = model.Email,
-                FundsAccount = new FundsAccount()
-                {
-                    AccountType = FundsAccountType.UserAccount,
-                }
             };
 
             IdentityResult result = await this.userManager.CreateAsync(user, model.Password);
@@ -80,9 +76,7 @@ namespace RaNetCore.Web.Areas.Authentication.Controllers
             if (result.Succeeded)
             {
                 // Assing the most basic role to the newly created User
-                await this.userManager.AddToRoleAsync(user, UserRoles.Basic.ToString());
-
-
+                await this.userManager.AddToRoleAsync(user, UserRoles.BasicUser.ToString());
 
                 return await this.ReturnAuthenticatedUserAsync(user);
             }

@@ -19,7 +19,7 @@ namespace RaNetCore.Web.StartupConfig.Identity
     {
         public static void SetUpIdentity(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentityCore<ApplicationUser>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<RaNetCoreDbContext>()
                 .AddDefaultTokenProviders();

@@ -352,3 +352,7 @@ MigrationBackup/
 RaNetCore/RaNetCore.Web/appsettings.json
 
 RaNetCore/RaNetCore.Web/appsettings.Development.json
+
+RaNetCore/RaNetCore.Web/ClientApp/yarn.lock
+
+RaNetCore/RaNetCore.Web/ClientApp/package-lock.json

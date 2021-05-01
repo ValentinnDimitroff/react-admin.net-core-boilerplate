@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Dve.Web.Areas.Authentication.ViewModels
+namespace RaNetCore.Web.Areas.Authentication.ViewModels
 {
     public class UserSignUpViewModel : UserBaseViewModel
     {
