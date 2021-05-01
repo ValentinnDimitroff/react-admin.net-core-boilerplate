@@ -6,9 +6,9 @@ import {
     EmailField,
     EditButton,
     DeleteButton,
-    // ChipFieldArray,
+    ChipFieldArray,
     // CompactList,
-    // FullNameField,
+    FullNameField,
 } from '../_design'
 
 const UsersList = (props) => {
@@ -27,9 +27,9 @@ const UsersList = (props) => {
             // }
         >
             <Datagrid rowClick="show">
-                {/* <FullNameField source="fullName" label="Name" /> */}
+                <FullNameField source="fullName" label="Name" />
                 <EmailField source="email" />
-                {/* <ChipFieldArray source="roles" /> */}
+                <ChipFieldArray source="roles" />
                 <EditButton />
                 <DeleteButton />
             </Datagrid>

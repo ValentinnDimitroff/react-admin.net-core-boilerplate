@@ -1,23 +1,29 @@
 export {
-    Create,
+    // display
     List,
     Show,
-    SimpleForm,
+    SimpleShowLayout,
+    TabbedShowLayout,
+    Tab,
     Datagrid,
+    // fields
     TextField,
     EmailField,
+    // inputs
+    Create,
+    SimpleForm,
+    SelectArrayInput,
     TextInput,
+    // buttons
     EditButton,
     DeleteButton,
 } from 'react-admin'
 
 export {
-    // ChipFieldArray,
-    // FullNameField,
+    ChipFieldArray,
+    FullNameField,
     // CompactList,
-    SplitShowContainer,
+    ShowSplitter,
 } from 'ra-compact-ui'
 
-export { default as ChipFieldArray } from './ChipFieldArray'
-export { default as FullNameField } from './FullNameField'
 

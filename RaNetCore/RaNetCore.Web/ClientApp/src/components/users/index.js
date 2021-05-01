@@ -11,9 +11,9 @@ export { AccountProfile }
 export default {
     crud: {
         list: UsersList,
-        // show: UserShow,
-        // edit: UsersEdit,
-        // create: UsersCreate,
+        show: UserShow,
+        edit: UsersEdit,
+        create: UsersCreate,
     },
     ...resourcesMap.users,
 }

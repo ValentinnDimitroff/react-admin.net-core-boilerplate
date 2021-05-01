@@ -16,11 +16,11 @@ export const App = (props) => {
 			authProvider={authProvider}
 			dataProvider={dataProvider}
 			history={history}
-		// theme={theme}
-		//profilePage={true}
-		//dashboard={Dashboard}
-		// i18nProvider={i18nProvider}
-		// customRoutes={routesProvider}
+			// theme={theme}
+			//profilePage={true}
+			//dashboard={Dashboard}
+			// i18nProvider={i18nProvider}
+			// customRoutes={routesProvider}
 		>
 			{addCrudResources(crudResources, null)}
 		</AuthAdmin>

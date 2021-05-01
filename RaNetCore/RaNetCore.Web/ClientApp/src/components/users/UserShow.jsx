@@ -1,7 +1,6 @@
 import React from 'react'
 import { Redirect, useLocation } from 'react-router-dom'
-import { ChipFieldArray, Show, SplitShowContainer, TextField } from '../_design'
-import { SimpleShowLayout, Tab, TabbedShowLayout } from 'react-admin'
+import { ChipFieldArray, Show, ShowSplitter, SimpleShowLayout, Tab, TabbedShowLayout, TextField } from '../_design'
 import UserProfileAvatar from './common/UserProfileAvatar'
 import UserTitle from './common/UserTitle'
 
@@ -14,28 +13,26 @@ const UserShow = (props) => {
 
     return (
         <Show {...props} component="div" title={<UserTitle />}>
-            <SimpleShowLayout>
-                <SplitShowContainer
-                    summaryView={
-                        <SimpleShowLayout>
-                            <UserProfileAvatar />
-                            <TextField source="fullName" />
-                            <TextField source="email" />
-                            <ChipFieldArray source="roles" />
-                        </SimpleShowLayout>
-                    }
-                    detailsView={
-                        <TabbedShowLayout>
-                            <Tab label="Activities" path="activities">
-                                {/* <UserActivitiesTab /> */}
-                            </Tab>
-                            <Tab label="Daily Costs" path="daily-costs">
-                                {/* <UserDailyCostsTab /> */}
-                            </Tab>
-                        </TabbedShowLayout>
-                    }
-                />
-            </SimpleShowLayout>
+            <ShowSplitter
+                leftSide={
+                    <SimpleShowLayout>
+                        <UserProfileAvatar />
+                        <TextField source="fullName" />
+                        <TextField source="email" />
+                        <ChipFieldArray source="roles" />
+                    </SimpleShowLayout>
+                }
+                rightSide={
+                    <TabbedShowLayout>
+                        <Tab label="Activities" path="activity">
+                            <div>Empty</div>
+                        </Tab>
+                        <Tab label="Daily Costs" path="stats">
+                            <div>Empty</div>
+                        </Tab>
+                    </TabbedShowLayout>
+                }
+            />
         </Show>
     )
 }

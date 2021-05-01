@@ -1,6 +1,5 @@
 import React from 'react'
-import { Create } from '../_design'
-import { SimpleForm, TextInput } from 'react-admin'
+import { Create, SimpleForm, TextInput  } from '../_design'
 
 const UsersCreate = (props) => {
     return (
@@ -13,7 +12,5 @@ const UsersCreate = (props) => {
         </Create>
     )
 }
-
-UsersCreate.propTypes = {}
 
 export default UsersCreate
