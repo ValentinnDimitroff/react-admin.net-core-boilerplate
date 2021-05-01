@@ -96,9 +96,9 @@ namespace RaNetCore.Web.BaseControllers
         }
 
 
-        // Public Methods - overrideable
+        // Methods - overrideable
 
-        public virtual async Task<TDetails> CreateAsync(TDetails model)
+        protected virtual async Task<TDetails> CreateAsync(TDetails model)
         {
             // Try upload images
             //if (this.blobManager != null) this.TryUploadImages(convertedModel);
@@ -112,7 +112,7 @@ namespace RaNetCore.Web.BaseControllers
             return this.Mapper.Map<TDetails>(newEntity);
         }
 
-        public virtual async Task<TDetails> UpdateAsync(TDetails model)
+        protected virtual async Task<TDetails> UpdateAsync(TDetails model)
         {
             // Try upload images
             //if (this.blobManager != null) this.TryUploadImages(convertedModel);
@@ -124,7 +124,7 @@ namespace RaNetCore.Web.BaseControllers
             return this.Mapper.Map<TDetails>(returnedEntity);
         }
 
-        public virtual async Task DeleteAsync(int id)
+        protected virtual async Task DeleteAsync(int id)
         {
             await this.ModelService.Delete(id);
         }
