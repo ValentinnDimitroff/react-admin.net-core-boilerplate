@@ -69,8 +69,9 @@ namespace RaNetCore.Web
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
             app.UseAuthentication();
-            //TODO ?? app.UseAuthorization();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

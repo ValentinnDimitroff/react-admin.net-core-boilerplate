@@ -1,0 +1,1 @@
+export { default as useGetAccountProfile } from './useGetAccountProfile'
