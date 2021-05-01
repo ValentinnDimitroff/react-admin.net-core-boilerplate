@@ -63,13 +63,12 @@ namespace RaNetCore.Web.BaseControllers
 
             // TODO - insert before fetching
             // Convert db entites to view models
-            IEnumerable<TDetails> result = this.FilterFetchedQuery(fetchedRows)
-                .Select(x => this.Mapper.Map<TDetails>(x));
+            IEnumerable<TDetails> result = await Task.WhenAll(
+                this.FilterFetchedQuery(fetchedRows)
+                    .Select(x => this.Mapper.Map<TDetails>(x))
+                    .Select(async x => await this.AlterViewModelOnGet(x))
+                );
 
-            // Process view models
-            foreach (TDetails item in result)
-                await this.AlterViewModelOnGet(item);
-            
             return result;
         }
 
@@ -87,7 +86,7 @@ namespace RaNetCore.Web.BaseControllers
                 if (entity == null)
                 {
                     Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    throw new Exception(); 
+                    throw new Exception();
                 }
 
                 return await this.AlterViewModelOnGet(entity);
