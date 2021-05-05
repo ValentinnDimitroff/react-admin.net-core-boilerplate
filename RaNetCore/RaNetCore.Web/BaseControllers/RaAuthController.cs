@@ -9,7 +9,7 @@ using RaNetCore.Services.BaseServices.Interfaces;
 namespace RaNetCore.Web.BaseControllers
 {
     [Authorize]
-    public class RaAuthController<TBase, TDetails> : RaController<TBase, TDetails>
+    public class RaAuthController<TBase, TDetails> : RaCrudController<TBase, TDetails>
         where TBase : class, IIdentifiable, new()
         where TDetails : class, IIdentifiable, new()
     {

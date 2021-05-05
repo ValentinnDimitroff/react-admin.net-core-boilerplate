@@ -17,7 +17,7 @@ using RaNetCore.Web.BaseControllers.Interfaces;
 
 namespace RaNetCore.Web.BaseControllers
 {
-    public class RaGetController<TBase, TDetails> : ControllerBase, IRaGetController<TDetails>
+    public abstract class RaGetController<TBase, TDetails> : ControllerBase, IRaGetController<TDetails>
         where TBase : class, IIdentifiable, new()
         where TDetails : class, IIdentifiable, new()
     {

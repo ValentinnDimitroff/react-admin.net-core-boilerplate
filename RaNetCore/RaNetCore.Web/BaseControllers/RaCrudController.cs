@@ -15,26 +15,17 @@ using RaNetCore.Web.BaseControllers.Interfaces;
 
 namespace RaNetCore.Web.BaseControllers
 {
-    public class RaController<TBase, TDetails> : RaGetController<TBase, TDetails>, IRaController<TDetails>
+    public abstract class RaCrudController<TBase, TDetails> : RaGetController<TBase, TDetails>, IRaController<TDetails>
         where TBase : class, IIdentifiable, new()
         where TDetails : class, IIdentifiable, new()
     {
-        private string blobStorageFolderName;
-        //private IBlobManager blobManager;
-
-        public RaController(
+        public RaCrudController(
             IRaNetCoreDbContext dbContext,
             IBaseModelService<TBase> modelService,
             IMapper mapper)
             : base(dbContext, modelService, mapper)
         {
-        }
-
-        //protected void SetUpBlobManager(IBlobManager blobManager, string folderName)
-        //{
-        //    this.blobManager = blobManager;
-        //    this.blobStorageFolderName = folderName;
-        //}        
+        } 
 
         // Actions
 
@@ -100,9 +91,6 @@ namespace RaNetCore.Web.BaseControllers
 
         protected virtual async Task<TDetails> CreateAsync(TDetails model)
         {
-            // Try upload images
-            //if (this.blobManager != null) this.TryUploadImages(convertedModel);
-
             // Convert to Base Type
             TBase entity = this.Mapper.Map<TBase>(model);
 
@@ -114,9 +102,6 @@ namespace RaNetCore.Web.BaseControllers
 
         protected virtual async Task<TDetails> UpdateAsync(TDetails model)
         {
-            // Try upload images
-            //if (this.blobManager != null) this.TryUploadImages(convertedModel);
-
             TBase entity = this.Mapper.Map<TBase>(model);
 
             TBase returnedEntity = await this.ModelService.Update(entity.Id, entity);
@@ -129,14 +114,5 @@ namespace RaNetCore.Web.BaseControllers
             await this.ModelService.Delete(id);
         }
 
-        // Private Methods
-
-        //private void TryUploadImages(TDetails viewModel)
-        //{
-        //    RaHelpers.UploadImages(
-        //          viewModel,
-        //          this.blobManager.UploadFileAndGetLink,
-        //          this.blobStorageFolderName);
-        //}
     }
 }
