@@ -15,7 +15,7 @@ using RaNetCore.Web.BaseControllers.Interfaces;
 
 namespace RaNetCore.Web.BaseControllers
 {
-    public class RaBlobCrudController<TBase, TDetails> : RaCrudController<TBase, TDetails>, IRaController<TDetails>
+    public abstract class RaBlobCrudController<TBase, TDetails> : RaCrudController<TBase, TDetails>, IRaController<TDetails>
         where TBase : class, IIdentifiable, new()
         where TDetails : class, IIdentifiable, new()
     {

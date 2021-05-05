@@ -32,6 +32,7 @@ namespace RaNetCore.Web.BaseControllers
         }
 
         // Properties
+
         protected IRaNetCoreDbContext DbContext { get; private set; }
         protected IMapper Mapper { get; private set; }
         protected IBaseModelService<TBase> ModelService { get; private set; }
@@ -39,6 +40,7 @@ namespace RaNetCore.Web.BaseControllers
         protected Func<string, string, IQueryable<TBase>, IQueryable<TBase>> CustomSorting { get; set; }
 
         // Actions
+
         [HttpGet]
         public async Task<IEnumerable<TDetails>> Get(string filter = "", string range = "", string sort = "")
         {
@@ -52,6 +54,7 @@ namespace RaNetCore.Web.BaseControllers
         }
 
         // Methods - overrideable
+
         protected virtual async Task<IEnumerable<TDetails>> GetAll(string filter = "", string range = "", string sort = "")
         {
             // Retrieve and process db entites

@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RaNetCore.BlobStorage\RaNetCore.BlobStorage.csproj" />
     <ProjectReference Include="..\RaNetCore.Common\RaNetCore.Common.csproj" />
     <ProjectReference Include="..\RaNetCore.Database\RaNetCore.Database.csproj" />
     <ProjectReference Include="..\RaNetCore.Services\RaNetCore.Services.csproj" />
