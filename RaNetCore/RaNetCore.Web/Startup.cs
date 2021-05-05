@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using Newtonsoft.Json;
-
+using RaNetCore.BlobStorage.DependencyInjection;
 using RaNetCore.Web.StartupConfig.AppServices;
 using RaNetCore.Web.StartupConfig.DbContext;
 using RaNetCore.Web.StartupConfig.Identity;
@@ -31,10 +31,13 @@ namespace RaNetCore.Web
             string connectionString = this.Configuration.GetConnectionString("DefaultConnection");
 
             // Custom set up extension methods from StatupConfig
-            services.SetUpThirdParties();
-            services.SetUpDbContext(connectionString);
-            services.SetUpIdentity(this.Configuration);
-            services.SetUpAppServices();
+            // Order must not be changed
+            services
+                .SetUpThirdParties()
+                .SetUpBlobStorage(this.Configuration)
+                .SetUpDbContext(connectionString)
+                .SetUpIdentity(this.Configuration)
+                .SetUpAppServices();
 
             services
                 .AddMvc()

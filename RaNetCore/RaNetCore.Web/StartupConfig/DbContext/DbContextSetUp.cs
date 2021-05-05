@@ -10,7 +10,7 @@ namespace RaNetCore.Web.StartupConfig.DbContext
 {
     public static class DbContextSetUp
     {
-        public static void SetUpDbContext(this IServiceCollection services, string connectionString)
+        public static IServiceCollection SetUpDbContext(this IServiceCollection services, string connectionString)
         {
             // HttpContextAccessor is used in DbContext to add Timestamps
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -23,6 +23,8 @@ namespace RaNetCore.Web.StartupConfig.DbContext
             // Register DbContext by interface
             services.AddScoped<IRaNetCoreDbContext>(
                 provider => provider.GetService<RaNetCoreDbContext>());
+
+            return services;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace RaNetCore.Web.StartupConfig.Identity
 {
     public static class IdentitySetUp
     {
-        public static void SetUpIdentity(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection SetUpIdentity(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddRoles<ApplicationRole>()
@@ -100,6 +100,8 @@ namespace RaNetCore.Web.StartupConfig.Identity
                             nameof(UserRoles.BasicUser)
                             ));
                 });
+
+            return services;
         }
     }
 }
