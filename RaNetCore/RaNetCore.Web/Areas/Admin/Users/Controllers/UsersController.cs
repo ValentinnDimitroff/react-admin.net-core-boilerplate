@@ -20,7 +20,7 @@ namespace RaNetCore.Web.Areas.Admin.Users.Controllers
 {
     [Authorize(IdentityPolicies.SuperUserOnly)]
     [Route("api/[controller]")]
-    public class UsersController : RaController
+    public class UsersController : RaCrudController
         <ApplicationUser, UserDetailsViewModel>
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -36,7 +36,7 @@ namespace RaNetCore.Web.Areas.Admin.Users.Controllers
             this.userService = modelService;
         }
 
-        public override async Task<UserDetailsViewModel> CreateAsync(UserDetailsViewModel model)
+        protected override async Task<UserDetailsViewModel> CreateAsync(UserDetailsViewModel model)
         {
             ApplicationUser entity = this.Mapper.Map<ApplicationUser>(model);
 
@@ -49,7 +49,7 @@ namespace RaNetCore.Web.Areas.Admin.Users.Controllers
             return this.Mapper.Map<UserDetailsViewModel>(dbUser);
         }
 
-        public override async Task<UserDetailsViewModel> UpdateAsync(UserDetailsViewModel model)
+        protected override async Task<UserDetailsViewModel> UpdateAsync(UserDetailsViewModel model)
         {
             ApplicationUser applicationUser = await userManager
                    .FindByIdAsync(model.Id.ToString());
