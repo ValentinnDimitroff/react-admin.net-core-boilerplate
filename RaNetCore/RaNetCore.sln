@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaNetCore.Services", "RaNet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaNetCore.Models", "RaNetCore.Models\RaNetCore.Models.csproj", "{35E8214E-C082-4F46-BF30-4159A1BF0435}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{499F76FF-7A34-4CCD-A9EE-81119CFDC057}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaNetCore.BlobStorage", "RaNetCore.BlobStorage\RaNetCore.BlobStorage.csproj", "{256ACCF0-57DB-4BEE-AC34-8C6A78575252}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +43,16 @@ Global
 		{35E8214E-C082-4F46-BF30-4159A1BF0435}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35E8214E-C082-4F46-BF30-4159A1BF0435}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35E8214E-C082-4F46-BF30-4159A1BF0435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{256ACCF0-57DB-4BEE-AC34-8C6A78575252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{256ACCF0-57DB-4BEE-AC34-8C6A78575252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{256ACCF0-57DB-4BEE-AC34-8C6A78575252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{256ACCF0-57DB-4BEE-AC34-8C6A78575252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{256ACCF0-57DB-4BEE-AC34-8C6A78575252} = {499F76FF-7A34-4CCD-A9EE-81119CFDC057}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {00E43CEB-1719-4C23-8636-E8C139DF8C04}
