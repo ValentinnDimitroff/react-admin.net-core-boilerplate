@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 import { Resource } from 'react-admin'
 import { AuthAdmin } from 'ra-auth-ui'
 import { createBrowserHistory as createHistory } from 'history'
-import { authProvider, dataProvider } from './ra-providers';
-import { crudResources } from './components';
+import { authProvider, dataProvider } from './ra-providers'
+import { crudResources, AccountProfile } from './components'
 
 const history = createHistory()
 
@@ -16,8 +16,8 @@ export const App = (props) => {
 			authProvider={authProvider}
 			dataProvider={dataProvider}
 			history={history}
+			profilePage={AccountProfile}
 			// theme={theme}
-			//profilePage={true}
 			//dashboard={Dashboard}
 			// i18nProvider={i18nProvider}
 			// customRoutes={routesProvider}
