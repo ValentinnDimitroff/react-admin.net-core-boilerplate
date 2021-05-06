@@ -34,9 +34,9 @@ namespace RaNetCore.Web
             // Order must not be changed
             services
                 .SetUpThirdParties()
-                .SetUpBlobStorage(this.Configuration)
+                .SetUpBlobStorage(Configuration)
                 .SetUpDbContext(connectionString)
-                .SetUpIdentity(this.Configuration)
+                .SetUpIdentity(Configuration)
                 .SetUpAppServices();
 
             services

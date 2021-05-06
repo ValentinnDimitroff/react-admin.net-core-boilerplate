@@ -11,17 +11,8 @@ namespace RaNetCore.BlobStorage.DependencyInjection
     {
         public static IServiceCollection SetUpBlobStorage(this IServiceCollection services, IConfiguration configuration)
         {
-
-            //    services.AddOptions<CookieAuthenticationOptions>(
-            //                CookieAuthenticationDefaults.AuthenticationScheme)
-            //.Configure<IMyService>((options, myService) =>
-            //{
-            //    options.LoginPath = myService.GetLoginPath();
-            //});
-
-            //services.Configure<CloudinaryOptions>(configuration?.GetSection(nameof(CloudinaryOptions)));
-
-            services.AddOptions<CloudinaryOptions>(nameof(CloudinaryOptions));
+            services.Configure<CloudinaryOptions>(
+                options => configuration.GetSection(nameof(CloudinaryOptions)).Bind(options));
 
             services
                 // Images Blob Storage
