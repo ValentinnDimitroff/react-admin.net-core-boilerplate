@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid'
 import { useGetAccountProfile } from '../hooks'
-import { AccountSummary, AccountDetails } from './sections'
+import { AccountSummary, AccountDetails, AccountSecurity } from './sections'
 
 const AccountProfile = () => {
     const { data, loading, loaded, error } = useGetAccountProfile()
@@ -32,6 +32,7 @@ const AccountProfile = () => {
                 </Grid>
                 <Grid item lg={8} md={6} xl={8} xs={12}>
                     <AccountDetails profileData={profileData} setProfileData={setProfileData} />
+                    <AccountSecurity />
                 </Grid>
             </Grid>
         </Box>

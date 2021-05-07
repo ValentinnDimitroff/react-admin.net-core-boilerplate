@@ -1,9 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+
 using AutoMapper;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -42,7 +45,7 @@ namespace RaNetCore.Web.Areas.Account.Controllers
         }
 
         [HttpPost("profile")]
-        public async Task<AccountViewModel> EditProfile([FromBody]JObject model)
+        public async Task<AccountViewModel> EditProfile([FromBody] JObject model)
         {
             AccountViewModel formModel = JsonConvert.DeserializeObject<AccountViewModel>(model.ToString());
 
@@ -57,7 +60,7 @@ namespace RaNetCore.Web.Areas.Account.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<AccountViewModel> UploadPicture([FromBody]JObject model)
+        public async Task<AccountViewModel> UploadPicture([FromBody] JObject model)
         {
             ApplicationUser dbUser = await this.GetDbUser();
 
@@ -71,7 +74,24 @@ namespace RaNetCore.Web.Areas.Account.Controllers
             return await this.UpdateDbUserAndReturn(dbUser);
         }
 
-        // TODO: Change Password
+        [HttpPost("[action]")]
+        public async Task<object> ChangePassword([FromBody] JObject model)
+        {
+            string currentPassword = model?.Value<string>("currentPassword");
+            string newPassword = model?.Value<string>("newPassword");
+
+            try
+            {
+                await this.userService.ChangePasswordAsync(currentPassword, newPassword);
+            }
+            catch (Exception ex)
+            {
+                // TODO - Handle Errors in a unified way
+                return ex.Message;
+            }
+
+            return true;
+        }
 
         // Private Methods
 

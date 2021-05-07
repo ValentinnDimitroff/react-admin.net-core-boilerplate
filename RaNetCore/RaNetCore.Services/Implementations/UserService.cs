@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 using RaNetCore.Database.Interfaces;
 using RaNetCore.Models.UserModels;
@@ -43,6 +44,23 @@ namespace RaNetCore.Services.Implementations
             }
 
             return user;
+        }
+
+        public async Task ChangePasswordAsync(string currentPassword, string newPassword)
+        {
+            //ApplicationUser currentUser = await this.GetCurrentUser()
+            //    .SingleOrDefaultAsync();
+
+            ApplicationUser currentUser = await this.userManager
+                .FindByIdAsync(this.GetCurrentUserId().ToString());
+
+            IdentityResult result = await this.userManager
+                .ChangePasswordAsync(currentUser, currentPassword, newPassword);
+
+            if (!result.Succeeded)
+            {
+                throw new Exception(string.Join(", ", result.Errors.Select(x => x.Description)));
+            }
         }
 
         public IQueryable<ApplicationUser> GetCurrentUser()

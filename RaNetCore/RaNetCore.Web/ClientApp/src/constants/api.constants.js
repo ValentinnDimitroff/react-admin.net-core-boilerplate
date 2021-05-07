@@ -9,5 +9,6 @@ export const apiCustomRoutes = {
     accounts: {
         Profile: `${API_PREFIX}/Accounts/Profile`,
         UploadPicture: `${API_PREFIX}/Accounts/UploadPicture`,
+        ChangePassword: `${API_PREFIX}/Accounts/ChangePassword`,
     },
 }

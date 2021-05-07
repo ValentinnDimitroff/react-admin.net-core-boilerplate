@@ -5,8 +5,6 @@ using RaNetCore.BlobStorage.Interfaces;
 
 namespace RaNetCore.BlobStorage.Abstraction
 {
-    //ScopedDependency(IFileBlobStorage, I)
-    //ScopedDependency(IImageBlobStorage)
     public abstract class BlobManager : IBlobManager, IFileBlobStorage, IImageBlobStorage
     {
         private readonly IBlobStorageProvider provider;
